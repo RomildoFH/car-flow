@@ -1,0 +1,20 @@
+:root {
+  --logo-width: 200px
+}
+
+.logo-loading {
+  animation: MoveUpDown 1s linear infinite;
+  position: absolute;
+  left: calc(50% - (var(--logo-width)) / 2);
+  right: 50%;
+  width: var(--logo-width);
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    bottom: calc(50% - (var(--logo-width)) / 2);
+  }
+  50% {
+    bottom: calc(45% - (var(--logo-width)) / 2);
+  }
+}

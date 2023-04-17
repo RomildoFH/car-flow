@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Routers from './Router';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { useContext } from 'react';
+import AppContext from './context/AppContext';
+import LoadingPage from './components/LoadingPage/LoadingPage';
+import Header from './components/Header.js/Header';
 function App() {
+  const { isLoading } = useContext(AppContext);
+
   return (
+    isLoading ? (<LoadingPage />) :
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header />
+        <Routers />
+      </Router>
     </div>
   );
 }
