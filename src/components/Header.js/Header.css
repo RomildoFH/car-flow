@@ -9,6 +9,8 @@ header {
   max-width: 100%;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.35);
   margin-bottom: 12px;
+  background-color: #202B57;
+  color: white;
 }
 
 .logo-container {

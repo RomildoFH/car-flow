@@ -1,0 +1,33 @@
+.page-title {
+  color: #37B3CA;
+  font-style: italic;
+  font-weight: 900;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.page-subtitle {
+  color: #a4a4a4;
+  font-style: italic;
+  text-align: center;
+}
+
+.home-controler {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
+}
+
+.home-controler button {
+  background-color: #202B57;
+  padding: 20px 40px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  box-shadow: 2px 5px 5px black;
+}
+
+.home-controler button:hover {
+  filter: brightness(150%);
+}
