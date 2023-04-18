@@ -5,6 +5,7 @@ import Employees from '../data/Employees';
 import Orders from '../data/Orders';
 import LoadingPage from '../components/LoadingPage/LoadingPage';
 import './OrderDetails.css';
+import QRCode from 'react-qr-code';
 
 function OrderDetails() {
   const {
@@ -21,9 +22,11 @@ function OrderDetails() {
   
   const location = useLocation();
   const pathname = location.pathname.replace('/car-flow/ordens/', '')
+  const url = `https://romildofh.github.io${location.pathname}`
+  console.log('url', url)
   const orderId = Number(pathname);
 
-  const [orderFiltred] = useState(Orders.filter((e) => e.id === orderId)[0])
+  const [orderFiltred] = useState(Orders.filter((e) => e.id === orderId)[0]);
   
   const { customer, budget } = order;
   // const services = budget.filter((e) => e.type === 'Serviço');
@@ -34,7 +37,7 @@ function OrderDetails() {
       services: budget.filter((e) => e.type === 'Serviço'),
       parts: budget.filter((e) => e.type === 'Produto'),
     })
-  }
+  };
 
   const getEmployees = () => {
     return (
@@ -145,6 +148,8 @@ function OrderDetails() {
     }
   }, [order])
 
+
+
   return (
     isLoading ? <LoadingPage /> :
     <main className="page-container">
@@ -220,6 +225,12 @@ function OrderDetails() {
           </button>
         </Link>
       </form>
+      <QRCode
+        size={200}
+        bgColor="white"
+        fgColor="black"
+        value={ url }
+      />
     </main>
   )
 }

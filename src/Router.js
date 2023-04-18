@@ -8,10 +8,10 @@ import Orders from './pages/Orders'
 function Routers() {
   return (
     <Routes>
-      <Route exact path="/car-flow" element={ <Home /> } />
-      <Route path="/car-flow/gerar-ordem" element={ <GenerateOrder /> } />
-      <Route exact path="/car-flow/ordens" element={ <Orders /> } />
-      <Route path="/car-flow/ordens/:id" element={ <OrderDetails /> } />
+      <Route exact path="/" element={ <Home /> } />
+      <Route path="/gerar-ordem" element={ <GenerateOrder /> } />
+      <Route exact path="/ordens" element={ <Orders /> } />
+      <Route path="/ordens/:id" element={ <OrderDetails /> } />
     </Routes>
   )
 }
