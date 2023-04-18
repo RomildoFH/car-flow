@@ -10,10 +10,6 @@ function Order() {
     setProduct,
     service,
     setService,
-    // serviceList,
-    // setServiceList,
-    // partList,
-    // setPartList,
     budget,
     setBudget,
   } = useContext(AppContext);
@@ -35,7 +31,6 @@ function Order() {
   };
 
   const generateBudget = () => {
-    // const budget = [...partList, ...serviceList];
     return (
       <tbody>
         {
@@ -44,7 +39,7 @@ function Order() {
               <tr key={ index }>
                 <td>{ e.name }</td>
                 <td>{ e.price.toFixed(2) }</td>
-                <td>X</td>
+                <td name="delete" onClick={() => handleClick({target: {name: 'delete', value: index}})}>X</td>
               </tr>
             )
           })
@@ -54,23 +49,20 @@ function Order() {
   };
 
   const handleClick = ({ target }) => {
-    const { name } = target;
-
-    // const currentServiceList = [...serviceList];
-    // const currentProductList = [...partList]
+    const { name, value } = target;
     const currentBudget = [...budget]
+
     switch (name) {
       case 'add-service':
-        // currentServiceList.push(service[0])
-        // setServiceList(currentServiceList);
         currentBudget.push(service[0])
         setBudget(currentBudget);
         break;
       case 'add-product':
-        // currentProductList.push(product[0])
-        // setPartList(currentProductList);
         currentBudget.push(product[0])
         setBudget(currentBudget);
+        break;
+      case 'delete':
+        setBudget(currentBudget.filter((_e, index) => index !== value));
         break;
       default:
         break;
@@ -80,7 +72,6 @@ function Order() {
   const getServices = () => {
     return (
       <select name="service" onChange={handleChange}>
-        {/* <option>Selecione um serviço</option> */}
         {Services.map((service, index) => (
           <option key={ `option-${index}` }>{ service.name }</option>
       ))}
@@ -91,7 +82,6 @@ function Order() {
   const getProducts = () => {
     return (
       <select name="product" onChange={(e) =>handleChange(e)}>
-        {/* <option>Selecione uma peça</option> */}
         {Products.map((products, index) => (
           <option key={ `option-${index}` }>{ products.name }</option>
       ))}
@@ -115,11 +105,10 @@ function Order() {
   };
 
   const getTotal = () => {
-    // const budget = [...partList, ...serviceList].map((e) => e.price);
     return (
-      <td>{ budget.reduce((acc, curr) => {
+      <td>{ (budget.reduce((acc, curr) => {
         return (acc + curr.price)
-      }, 0) }</td>
+      }, 0)).toFixed(2) }</td>
     )
   }
 
