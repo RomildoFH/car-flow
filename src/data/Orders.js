@@ -16,6 +16,12 @@ const Orders = [
         type: 'Serviço',
       },
       {
+        id: 3,
+        name: 'Substituição do filtro de óleo',
+        price: 20.00,
+        type: 'Serviço',
+      },
+      {
         id: 6,
         name: "Motor Bomba Cambio Dualogic",
         price: 1792.00,
@@ -40,8 +46,8 @@ const Orders = [
     budget: [
       {
         id: 3,
-        name: "Diagnóstico com robô",
-        price: 70.00,
+        name: "Substituição de correia dentada",
+        price: 150.00,
         type: 'Serviço',
       },
       {
@@ -69,8 +75,8 @@ const Orders = [
     budget: [
       {
         id: 3,
-        name: "Diagnóstico com robô",
-        price: 70.00,
+        name: 'Substituição do terminal da suspensão diânteira um lado',
+        price: 40.00,
         type: 'Serviço',
       },
       {
@@ -98,8 +104,8 @@ const Orders = [
     budget: [
       {
         id: 3,
-        name: "Diagnóstico com robô",
-        price: 70.00,
+        name: 'Substituição do filtro de óleo',
+        price: 20.00,
         type: 'Serviço',
       },
       {

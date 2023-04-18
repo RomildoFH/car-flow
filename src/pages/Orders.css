@@ -1,0 +1,11 @@
+.orders-table {
+  border-collapse: collapse;
+}
+
+.orders-table th {
+  border: 1px solid black;
+}
+
+.orders-table td {
+  border: 1px solid black;
+}
