@@ -98,7 +98,7 @@ function GenerateOrder() {
 
   const getServices = () => {
     return (
-      <select name="service" onChange={handleChange}>
+      <select name="service" onChange={handleChange} className="input-data-text">
         {Services.map((service, index) => (
           <option key={ `option-${index}` }>{ service.name }</option>
       ))}
@@ -108,7 +108,7 @@ function GenerateOrder() {
 
   const getProducts = () => {
     return (
-      <select name="product" onChange={(e) =>handleChange(e)}>
+      <select name="product" onChange={(e) =>handleChange(e)} className="input-data-text">
         {Products.map((products, index) => (
           <option key={ `option-${index}` }>{ products.name }</option>
       ))}
@@ -219,7 +219,7 @@ function GenerateOrder() {
         </fieldset>
         <fieldset className="forms-section">
           <legend>Dados do serviço</legend>
-          <label>
+          <label className="input-container">
             Serviço:
             {
               getServices()

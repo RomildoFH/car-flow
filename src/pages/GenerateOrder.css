@@ -3,15 +3,21 @@
   margin-bottom: 20px;
 }
 
-.input-data-text {
-  margin: 0 8px;
+.forms-section label {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 16px;
 }
 
-.big-input {
-  width: 30%;
+.input-data-text {
+  width:80%;
 }
 
 .product-list {
   font-size: 0.8em;
   margin: 12px 0;
+}
+
+.input-container {
+  margin: 0;
 }

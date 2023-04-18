@@ -42,3 +42,12 @@ header {
   width: 50px;
   height: 60%;
 }
+
+.login-btn {
+  height: 25px;
+  width: 80px;
+}
+
+.login-input {
+  height: 25px;
+}

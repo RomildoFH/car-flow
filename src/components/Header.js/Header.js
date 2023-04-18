@@ -45,13 +45,25 @@ function Header() {
         <form className="login-container">
           <label>
             e-mail
-            <input name="email" type="text" onChange={ (e) => handleChange(e) } value={ email } />
+            <input
+              name="email"
+              type="text"
+              onChange={ (e) => handleChange(e) }
+              value={ email }
+              className="login-input"
+            />
           </label>
           <label>
             senha
-            <input name="password" type="password" onChange={ (e) => handleChange(e) } value={ password } />
+            <input
+              name="password"
+              type="password"
+              onChange={ (e) => handleChange(e) }
+              value={ password }
+              className="login-input"
+            />
           </label>
-          <button type="button" onClick={ handleClick }>Entrar</button>
+          <button type="button" onClick={ handleClick } className="login-btn">Entrar</button>
         </form> :
         <p>Seja bem vindo(a)</p>
       }

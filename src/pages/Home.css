@@ -15,6 +15,7 @@
 .home-controler {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin-top: 100px;
 }
 
@@ -26,6 +27,7 @@
   font-weight: 700;
   border: none;
   box-shadow: 2px 5px 5px black;
+  margin: 10px
 }
 
 .home-controler button:hover {
