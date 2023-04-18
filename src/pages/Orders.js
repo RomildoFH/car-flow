@@ -68,7 +68,7 @@ function Orders() {
             }            
           </td>
           <td>
-            <Link to={`/car-flow/ordens/${id}`}>
+            <Link to={`/ordens/${id}`}>
               <span className="controller-option" onClick={() => setOrder(order)}>📂</span>
             </Link>
             <span onClick={() => deleteOrder(id)} className="controller-option">🗑</span>

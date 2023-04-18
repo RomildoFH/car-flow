@@ -21,8 +21,8 @@ function OrderDetails() {
   const [isLoading, setIsLoading] = useState(true);
   
   const location = useLocation();
-  const pathname = location.pathname.replace('/car-flow/ordens/', '')
-  const url = `https://romildofh.github.io${location.pathname}`
+  const pathname = location.pathname.replace('/ordens/', '')
+  const url = `https://car-flow.vercel.app/${location.pathname}`
   console.log('url', url)
   const orderId = Number(pathname);
 
@@ -214,7 +214,7 @@ function OrderDetails() {
               getServicesData()
             }
         </fieldset>
-        <Link to="/car-flow/ordens">
+        <Link to="/ordens">
           <button
             type="button"
             name="finish"
