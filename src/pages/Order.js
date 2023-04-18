@@ -34,12 +34,10 @@ function Order() {
 
   const generateBudget = () => {
     const budget = [...partList, ...serviceList];
-    console.log(budget)
     return (
       <tbody>
         {
           budget.map((e, index) => {
-            console.log(e)
             return (
               <tr key={ index }>
                 <td>{ e.name }</td>
@@ -108,6 +106,15 @@ function Order() {
       </ul>
     )
   };
+
+  const getTotal = () => {
+    const budget = [...partList, ...serviceList].map((e) => e.price);
+    return (
+      <td>{ budget.reduce((acc, curr) => {
+        return acc + curr
+      }, 0) }</td>
+    )
+  }
 
   return (
     <main className="page-container">
@@ -218,6 +225,14 @@ function Order() {
             {
               (serviceList.length > 0 || partList.length > 0) ? generateBudget() : null
             }
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                {
+                  (serviceList.length > 0 || partList.length > 0) ? getTotal() : null
+                }
+              </tr>
+            </tfoot>
           </table>
         </fieldset>
       </form>
