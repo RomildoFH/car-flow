@@ -1,5 +1,6 @@
-import React from 'react'
-import QRCode from 'react-qr-code'
+import React from 'react';
+import QRCode from 'react-qr-code';
+import PropTypes from 'prop-types';
 import './QrCode.css';
 
 function QrCode(props) {
@@ -35,6 +36,11 @@ function QrCode(props) {
       </section>
     </div>
   )
+}
+
+QrCode.propTypes = {
+  url: PropTypes.string,
+  setQrCode: PropTypes.func,
 }
 
 export default QrCode
