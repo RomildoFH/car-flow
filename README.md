@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+## Car Flow
+Este projeto foi elaborador com a finalidade de participação do processo seletivo para desenvolvedor front-end da empresa <strong>Ultracar</strong>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## DESAFIO PROPOSTO
+Determinada oficina necessita de um processo para
+execução de serviço em veículos.
+Como pessoa responsável pelo desenvolvimento, você
+montará um fluxo e apresentará a sua solução
+desenvolvida usando a construção de telas.
+A ideia é um cliente chegar em uma oficina, onde um
+técnico fará:
+- Identificação do cliente
+- Via QRCode lido visualizará os dados do
+cliente/veículo;
+- Será inserido o nome da pessoa que será responsável
+pelo serviço a ser executado no veículo
+- Se envolver peças será selecionada a peça, onde
+automaticamente será lido o valor da peça
+- Ao iniciar o serviço (confirmação) deverá ser
+administrado internamente a data/hora do inicio e a
+data/inicio do termino da execução do serviço.
 
-## Available Scripts
+## Utilização
 
-In the project directory, you can run:
+### Uso Web
+Para utilizar essa aplicação em seu browser, acesse o link <a href="https://car-flow-git-main-romildofh.vercel.app/" target= "_blank">Car Flow</a>.
+A aplicação não conta com banco de dados implementados, então os dados são estáticos e estão sendo renderizados na tela através de mocks. Ainda que não possua banco de dados, o usuário poderá interagir com a aplicação em todas as suas funcionalidades, porém ao deixar a página, os dados serão perdidos.
 
-### `npm start`
+### Uso Local
+Para utilizar esse projeto localmente, você deverá realizar o clone do repositório atrés do comando:
+```
+Aqui está o comando
+```
+Após isto, instale as dependências do projeto através do comando (assegure-se de estar na root do projeto):
+```
+npm install
+```
+Dependências instaladas, podemos rodar a aplicação através do comando:
+```
+npm start
+```
+Esse comando abrirá uma nova aba em seu navegador web, e você poderá fazer uso da aplicação (sem back-end).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Melhorias futuras
+<ul>
+  <li>Implementar back-end para gestão das informações inseridas no site</li>
+  <li>Desenvolver testes de integração e unitários para assegurar o correto retorno e renderização do código</li>
+  <li>Estilização para dispositivos mobile</li>
+  <li>Validação de dados através da geração de tokens que possam ser cryptografados para armazenar dados</li>
+  <li>Criação de filtros diversos, tais como, filtros de data, peças, serviços, status e outros nas telas de ordem de serviço e relatórios</li>
+  <li>Implementação de lógica para exibição exclusiva de peças compatíveis com o veículo que está sendo utilizado para entrada da ordem de serviço</li>
+</ul>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Dificuldades na elaboração do projeto
+<ul>
+  <li>Dificuldades en consciliar as rotas da aplicação com o github pages</li>
+  <li>Levantamento de informações compatíveis com o projeto</li>
+  <li>Realizar a "gestão" dos dados através de mocks e não de banco de dados ou APIs que pudessem trazer segurança e praticidade</li>
+  <li>Prazo curto para desenvolvimento</li>
+</ul>
