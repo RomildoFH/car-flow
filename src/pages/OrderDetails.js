@@ -5,7 +5,7 @@ import Employees from '../data/Employees';
 import Orders from '../data/Orders';
 import LoadingPage from '../components/LoadingPage/LoadingPage';
 import './OrderDetails.css';
-import QRCode from 'react-qr-code';
+import QrCode from '../components/QrCode/QrCode';
 
 function OrderDetails() {
   const {
@@ -16,9 +16,9 @@ function OrderDetails() {
   } = useContext(AppContext);
 
   
-  const [employee, setEmployee] = useState('');
-  
+  const [employee, setEmployee] = useState('');  
   const [isLoading, setIsLoading] = useState(true);
+  const [qrCode, setQrCode] = useState(false);
   
   const location = useLocation();
   const pathname = location.pathname.replace('/ordens/', '')
@@ -132,6 +132,14 @@ function OrderDetails() {
     )
   };
 
+  const generateQrCode = () => {
+    if(!qrCode) {
+      setQrCode(true);
+    } else {
+      setQrCode(false);
+    }
+  }
+
   useEffect(() => {
     console.log(order)
     if(!order.id) {
@@ -224,13 +232,11 @@ function OrderDetails() {
             Finalizar
           </button>
         </Link>
+        <button type="button" onClick={ generateQrCode }>Gerar QrCode</button>
       </form>
-      <QRCode
-        size={200}
-        bgColor="white"
-        fgColor="black"
-        value={ url }
-      />
+      {
+        qrCode ? <QrCode url={ url } setQrCode={setQrCode} /> : null
+      }
     </main>
   )
 }
