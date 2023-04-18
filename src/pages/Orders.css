@@ -1,5 +1,7 @@
 .orders-table {
+  width: 100%;
   border-collapse: collapse;
+  text-align: center;
 }
 
 .orders-table th {
@@ -8,4 +10,9 @@
 
 .orders-table td {
   border: 1px solid black;
+}
+
+.controller-option {
+  margin: 0 4px;
+  cursor: pointer;
 }

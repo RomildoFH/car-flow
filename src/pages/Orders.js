@@ -17,6 +17,11 @@ function Orders() {
     )
   };
 
+  const deleteOrder = (id) => {
+    const newOrderList = orderList.filter((order) => order.id !== id);
+    setOrderList(newOrderList);
+  }
+
   const generateOrders = () => {
     return (
       orderList.map((order, index) => {
@@ -28,11 +33,11 @@ function Orders() {
           openAt,
           startedAt,
           finishedAt,
-          mechanic,
+          // mechanic,
         } = order;
 
-        const services = budget.filter((e) => e.type === 'Serviço');
-        const parts = budget.filter((e) => e.type === 'Produto');
+        // const services = budget.filter((e) => e.type === 'Serviço');
+        // const parts = budget.filter((e) => e.type === 'Produto');
 
         return (
         <tr key={ index }>
@@ -55,10 +60,14 @@ function Orders() {
             }
           </td>
           {/* <td>Mecânico</td> */}
-          <td>{ openAt.replace('T', ' ') }</td>
-          <td>{ startedAt.replace('T', ' ') }</td>
-          <td>{ finishedAt.replace('T', ' ') }</td>
-          <td></td>
+          <td>{ openAt.replace('T', ' ').replace('.137Z', '') }</td>
+          <td>{ startedAt.replace('T', ' ').replace('.137Z', '') }</td>
+          <td>{ finishedAt.replace('T', ' ').replace('.137Z', '') }</td>
+          <td>{ status }</td>
+          <td>
+            <span className="controller-option">📂</span>
+            <span onClick={() => deleteOrder(id)} className="controller-option">🗑</span>
+          </td>
         </tr>
         )
       })
@@ -81,6 +90,7 @@ function Orders() {
             <th>Inicio</th>
             <th>Término</th>
             <th>Status</th>
+            <th>Abrir/Excluir</th>
           </tr>
         </thead>
         <tbody>
