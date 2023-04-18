@@ -7,8 +7,9 @@ function AppProvider( { children } ) {
   const [productList, setProductList] = useState([]);
   const [product, setProduct] = useState([]);
   const [service, setService] = useState([]);
-  const [serviceList, setServiceList] = useState([]);
-  const [partList, setPartList] = useState([]);
+  // const [serviceList, setServiceList] = useState([]);
+  // const [partList, setPartList] = useState([]);
+  const [budget, setBudget] = useState([]);
 
   const values = useMemo(() => ({
     isLoading,
@@ -19,17 +20,20 @@ function AppProvider( { children } ) {
     setProduct,
     service,
     setService,
-    serviceList,
-    setServiceList,
-    partList,
-    setPartList,
+    // serviceList,
+    // setServiceList,
+    // partList,
+    // setPartList,
+    budget,
+    setBudget,
   }), [
     isLoading,
     productList,
     product,
     service,
-    serviceList,
-    partList,
+    // serviceList,
+    // partList,
+    budget,
   ])
 
   return (

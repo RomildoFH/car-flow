@@ -10,10 +10,12 @@ function Order() {
     setProduct,
     service,
     setService,
-    serviceList,
-    setServiceList,
-    partList,
-    setPartList,
+    // serviceList,
+    // setServiceList,
+    // partList,
+    // setPartList,
+    budget,
+    setBudget,
   } = useContext(AppContext);
 
   const handleChange = ({ target }) => {
@@ -33,7 +35,7 @@ function Order() {
   };
 
   const generateBudget = () => {
-    const budget = [...partList, ...serviceList];
+    // const budget = [...partList, ...serviceList];
     return (
       <tbody>
         {
@@ -54,16 +56,21 @@ function Order() {
   const handleClick = ({ target }) => {
     const { name } = target;
 
-    const currentServiceList = [...serviceList];
-    const currentProductList = [...partList]
+    // const currentServiceList = [...serviceList];
+    // const currentProductList = [...partList]
+    const currentBudget = [...budget]
     switch (name) {
       case 'add-service':
-        currentServiceList.push(service[0])
-        setServiceList(currentServiceList);
+        // currentServiceList.push(service[0])
+        // setServiceList(currentServiceList);
+        currentBudget.push(service[0])
+        setBudget(currentBudget);
         break;
       case 'add-product':
-        currentProductList.push(product[0])
-        setPartList(currentProductList);
+        // currentProductList.push(product[0])
+        // setPartList(currentProductList);
+        currentBudget.push(product[0])
+        setBudget(currentBudget);
         break;
       default:
         break;
@@ -108,10 +115,10 @@ function Order() {
   };
 
   const getTotal = () => {
-    const budget = [...partList, ...serviceList].map((e) => e.price);
+    // const budget = [...partList, ...serviceList].map((e) => e.price);
     return (
       <td>{ budget.reduce((acc, curr) => {
-        return acc + curr
+        return (acc + curr.price)
       }, 0) }</td>
     )
   }
@@ -218,18 +225,18 @@ function Order() {
             <thead>
               <tr>
                 <td>Produto/Serviço</td>
-                <td>Preço</td>
+                <td>Preço (R$)</td>
                 <td>Excluir</td>
               </tr>
             </thead>
             {
-              (serviceList.length > 0 || partList.length > 0) ? generateBudget() : null
+              (budget.length > 0) ? generateBudget() : null
             }
             <tfoot>
               <tr>
                 <td>Total</td>
                 {
-                  (serviceList.length > 0 || partList.length > 0) ? getTotal() : null
+                  (budget.length > 0) ? getTotal() : null
                 }
               </tr>
             </tfoot>
