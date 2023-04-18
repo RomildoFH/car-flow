@@ -24,7 +24,7 @@
 
 #print-qrcode {
   position: fixed;
-  left: 65%;
+  left: 60%;
   bottom: 72%;
   z-index: 1;
 }
