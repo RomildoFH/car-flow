@@ -29,7 +29,7 @@ A aplicação não conta com banco de dados implementados, então os dados são 
 ### Uso Local
 Para utilizar esse projeto localmente, você deverá realizar o clone do repositório atrés do comando:
 ```
-Aqui está o comando
+git clone git@github.com:RomildoFH/car-flow.git
 ```
 Após isto, instale as dependências do projeto através do comando (assegure-se de estar na root do projeto):
 ```
