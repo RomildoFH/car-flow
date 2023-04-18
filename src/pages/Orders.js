@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
-import './Orders.css'
+import './Orders.css';
 import AppContext from '../context/AppContext';
+import { Link } from 'react-router-dom';
 
 function Orders() {
   const {
+    setOrder,
     orderList,
     setOrderList,
   } = useContext(AppContext);
@@ -20,7 +22,7 @@ function Orders() {
   const deleteOrder = (id) => {
     const newOrderList = orderList.filter((order) => order.id !== id);
     setOrderList(newOrderList);
-  }
+  };
 
   const generateOrders = () => {
     return (
@@ -65,7 +67,9 @@ function Orders() {
           <td>{ finishedAt.replace('T', ' ').replace('.137Z', '') }</td>
           <td>{ status }</td>
           <td>
-            <span className="controller-option">📂</span>
+            <Link to={`/car-flow/ordens/${id}`}>
+              <span className="controller-option" onClick={() => setOrder(order)}>📂</span>
+            </Link>
             <span onClick={() => deleteOrder(id)} className="controller-option">🗑</span>
           </td>
         </tr>

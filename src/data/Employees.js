@@ -1,19 +1,23 @@
 const Employees = [
   {
     id: 1,
-    name: 'Joana'
+    name: 'Joana',
+    status: 'availabel',
   },
   {
     id: 2,
-    name: 'Erinaldo'
+    name: 'Erinaldo',
+    status: 'availabel',
   },
   {
     id: 3,
-    name: 'Rafael'
+    name: 'Rafael',
+    status: 'availabel',
   },
   {
     id: 4,
-    name: 'Cristiano'
+    name: 'Cristiano',
+    status: 'unavailabel',
   },
 ]
 
