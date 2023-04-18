@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import Employees from '../data/Employees';
 import Orders from '../data/Orders';
@@ -38,7 +38,13 @@ function OrderDetails() {
 
   const getEmployees = () => {
     return (
-      <select className="mechanic-select" name="employee" onChange={(e) => handleChange(e)} value={employee}>
+      <select
+      className="mechanic-select"
+      name="employee"
+      onChange={(e) => handleChange(e)}
+      value={employee}
+      disabled={ employee !== '' && order.mechanic }
+      >
         <option></option>
         {
           Employees.filter((employee) => (employee.status === 'availabel'))
@@ -66,18 +72,21 @@ function OrderDetails() {
     const assigningOrder = {...order};
     const otherOrders = orderList.filter((o) => o.id !== order.id);
     const currentDate = employee ? (new Date()).toISOString() : ''
-    console.log('clickou');
     switch (name) {
       case 'assign':
         assigningOrder.mechanic = employee;
         assigningOrder.startedAt = currentDate;
-        console.log(employee);
-        setOrderList([...otherOrders, assigningOrder])
+        setOrderList([...otherOrders, assigningOrder]);
+        setOrder(assigningOrder);
+        break;
+      case 'finish':
+        assigningOrder.finishedAt = currentDate;
+        setOrderList([...otherOrders, assigningOrder]);
+        setOrder(assigningOrder);
         break;
       default:
         break;
-    }
-    
+    }    
   };
 
   const getServicesData = () => {
@@ -108,7 +117,13 @@ function OrderDetails() {
               getEmployees()
             }
           </label>
-          <button type="button" name="assign" onClick={(e) => handleClick(e)}>Atribuir</button>
+          <button
+          type="button"
+          name="assign"
+          onClick={(e) => handleClick(e)}
+          >
+            Atribuir
+          </button>
         </fieldset>
       </ul>
     )
@@ -128,7 +143,7 @@ function OrderDetails() {
     if(order && isLoading) {
       setIsLoading(false)
     }
-  }, order)
+  }, [order])
 
   return (
     isLoading ? <LoadingPage /> :
@@ -194,6 +209,16 @@ function OrderDetails() {
               getServicesData()
             }
         </fieldset>
+        <Link to="/car-flow/ordens">
+          <button
+            type="button"
+            name="finish"
+            onClick={(e) => handleClick(e)}
+            disabled={!order.mechanic}
+          >
+            Finalizar
+          </button>
+        </Link>
       </form>
     </main>
   )

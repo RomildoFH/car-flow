@@ -10,3 +10,8 @@
   margin: 20px 10px;
   width: 100px;
 }
+
+.mechanic-select:disabled {
+  color: black;
+  border: 2px solid greenyellow;
+}
