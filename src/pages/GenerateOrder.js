@@ -4,7 +4,7 @@ import Products from '../data/Products';
 import './Order.css'
 import AppContext from '../context/AppContext';
 
-function Order() {
+function GenerateOrder() {
   const {
     product,
     setProduct,
@@ -12,11 +12,17 @@ function Order() {
     setService,
     budget,
     setBudget,
+    customer,
+    setCustomer,
+    setOrder,
+    orderList,
+    setOrderList,
   } = useContext(AppContext);
 
   const handleChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;    
+    const client = {...customer};
 
     switch (name) {
       case 'product':
@@ -24,7 +30,27 @@ function Order() {
         break;    
       case 'service':
         setService(Services.filter((service) => service.name === value));
-        break;
+        break;      
+        case 'name':
+          client.name = value
+          setCustomer(client);
+          break;
+        case 'car':
+          client.car = value
+          setCustomer(client);
+          break;
+        case 'plate':
+          client.plate = value
+          setCustomer(client);
+          break;
+        case 'year':
+          client.year = value
+          setCustomer(client);
+          break;
+        case 'phone':
+          client.phone = value
+          setCustomer(client);
+          break;
       default:
         break;
     }
@@ -38,6 +64,7 @@ function Order() {
             return (
               <tr key={ index }>
                 <td>{ e.name }</td>
+                <td>{ e.type }</td>
                 <td>{ e.price.toFixed(2) }</td>
                 <td name="delete" onClick={() => handleClick({target: {name: 'delete', value: index}})}>X</td>
               </tr>
@@ -50,15 +77,15 @@ function Order() {
 
   const handleClick = ({ target }) => {
     const { name, value } = target;
-    const currentBudget = [...budget]
+    const currentBudget = [...budget];
 
     switch (name) {
       case 'add-service':
-        currentBudget.push(service[0])
+        currentBudget.push({...service[0], type: 'Serviço'})
         setBudget(currentBudget);
         break;
       case 'add-product':
-        currentBudget.push(product[0])
+        currentBudget.push({...product[0], type: 'Produto'})
         setBudget(currentBudget);
         break;
       case 'delete':
@@ -110,7 +137,28 @@ function Order() {
         return (acc + curr.price)
       }, 0)).toFixed(2) }</td>
     )
-  }
+  };
+
+  const generateOrder = () => {
+    const id = orderList.length + 1;
+    const open = (new Date()).toISOString()
+    const newOrder = {
+      customer,
+      budget,
+      id,
+      status: 'Aprovação Pendente',
+      openAt: open,
+      startedAt: '',
+      finishedAt: '',
+    };
+    setOrder(newOrder);
+    const newOrderList = [...orderList, newOrder];
+    setOrderList(newOrderList);
+    setBudget([]);
+    setCustomer({name: '', car: '', plate: '', year: '', phone: ''})
+    setProduct([]);
+    setService([]);
+  };
 
   return (
     <main className="page-container">
@@ -123,6 +171,8 @@ function Order() {
               className="input-data-text big-input"
               type="text"
               name="name"
+              onChange={(e) => handleChange(e)}
+              value={customer.name}
             />
           </label>
           <label>
@@ -131,6 +181,8 @@ function Order() {
               className="input-data-text"
               type="text"
               name="car"
+              onChange={(e) => handleChange(e)}
+              value={customer.car}
             />
           </label>
           <label>
@@ -139,6 +191,8 @@ function Order() {
               className="input-data-text"
               type="text"
               name="plate"
+              onChange={(e) => handleChange(e)}
+              value={customer.plate}
             />
           </label>
           <label>
@@ -147,6 +201,18 @@ function Order() {
               className="input-data-text"
               type="text"
               name="year"
+              onChange={(e) => handleChange(e)}
+              value={customer.year}
+            />
+          </label>
+          <label>
+            Telefone:
+            <input
+              className="input-data-text"
+              type="text"
+              name="phone"
+              onChange={(e) => handleChange(e)}
+              value={customer.phone}
             />
           </label>
         </fieldset>
@@ -214,6 +280,7 @@ function Order() {
             <thead>
               <tr>
                 <td>Produto/Serviço</td>
+                <td>Tipo</td>
                 <td>Preço (R$)</td>
                 <td>Excluir</td>
               </tr>
@@ -224,16 +291,19 @@ function Order() {
             <tfoot>
               <tr>
                 <td>Total</td>
+                <td></td>
                 {
                   (budget.length > 0) ? getTotal() : null
                 }
               </tr>
             </tfoot>
           </table>
+          <button type="button" onClick={generateOrder}>Gerar</button>
+          <button>Cancelar</button>
         </fieldset>
       </form>
     </main>
   )
 }
 
-export default Order
+export default GenerateOrder;

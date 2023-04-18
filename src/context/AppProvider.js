@@ -1,15 +1,23 @@
 import React, { useMemo, useState } from 'react'
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
+import Orders from '../data/Orders';
 
 function AppProvider( { children } ) {
   const [isLoading, setIsLoading] = useState(true);
   const [productList, setProductList] = useState([]);
   const [product, setProduct] = useState([]);
   const [service, setService] = useState([]);
-  // const [serviceList, setServiceList] = useState([]);
-  // const [partList, setPartList] = useState([]);
   const [budget, setBudget] = useState([]);
+  const [customer, setCustomer] = useState({
+    name: '',
+    car: '',
+    plate: '',
+    year: '',
+    phone: '',
+  });
+  const [order, setOrder] = useState({});
+  const [orderList, setOrderList] = useState(Orders);
 
   const values = useMemo(() => ({
     isLoading,
@@ -20,20 +28,24 @@ function AppProvider( { children } ) {
     setProduct,
     service,
     setService,
-    // serviceList,
-    // setServiceList,
-    // partList,
-    // setPartList,
     budget,
     setBudget,
+    customer,
+    setCustomer,
+    order,
+    setOrder,
+    orderList,
+    setOrderList,
+
   }), [
     isLoading,
     productList,
     product,
     service,
-    // serviceList,
-    // partList,
     budget,
+    customer,
+    order,
+    orderList,
   ])
 
   return (
