@@ -14,7 +14,9 @@ function Home() {
         <Link to="/ordens">
           <button>Ordens de Serviço</button>
         </Link>
-        <button>Ocupação</button>
+        <Link to="/ocupacao">
+          <button>Ocupação</button>
+        </Link>
         <button>Relatório</button>
       </section>
     </main>
