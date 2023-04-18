@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/car-flow/static/css/main.4881cba2.css",
-    "main.js": "/car-flow/static/js/main.3d04c41c.js",
+    "main.css": "/car-flow/static/css/main.777ec95e.css",
+    "main.js": "/car-flow/static/js/main.9b575901.js",
     "static/js/787.c9ceef47.chunk.js": "/car-flow/static/js/787.c9ceef47.chunk.js",
     "static/media/cabecalho.png": "/car-flow/static/media/cabecalho.692c2bb073b96d4a716d.png",
     "static/media/Logo_Nova.png": "/car-flow/static/media/Logo_Nova.d914d912ef98eb4df252.png",
     "index.html": "/car-flow/index.html",
-    "main.4881cba2.css.map": "/car-flow/static/css/main.4881cba2.css.map",
-    "main.3d04c41c.js.map": "/car-flow/static/js/main.3d04c41c.js.map",
+    "main.777ec95e.css.map": "/car-flow/static/css/main.777ec95e.css.map",
+    "main.9b575901.js.map": "/car-flow/static/js/main.9b575901.js.map",
     "787.c9ceef47.chunk.js.map": "/car-flow/static/js/787.c9ceef47.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4881cba2.css",
-    "static/js/main.3d04c41c.js"
+    "static/css/main.777ec95e.css",
+    "static/js/main.9b575901.js"
   ]
 }
