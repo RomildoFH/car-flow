@@ -76,11 +76,13 @@ function OrderDetails() {
       case 'assign':
         assigningOrder.mechanic = employee;
         assigningOrder.startedAt = currentDate;
+        assigningOrder.status = 'Em andamento';
         setOrderList([...otherOrders, assigningOrder]);
         setOrder(assigningOrder);
         break;
       case 'finish':
         assigningOrder.finishedAt = currentDate;
+        assigningOrder.status = 'Finalizada';
         setOrderList([...otherOrders, assigningOrder]);
         setOrder(assigningOrder);
         break;

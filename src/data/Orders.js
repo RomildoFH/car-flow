@@ -28,7 +28,7 @@ const Orders = [
         type: 'Produto',
       },
     ],
-    status: 'Pendente de Aprovação',
+    status: 'Aguardando',
     openAt: '2023-04-18T03:17:58.137Z',
     startedAt: '',
     finishedAt: '',

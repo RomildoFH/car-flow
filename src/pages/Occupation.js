@@ -67,7 +67,7 @@ function Occupation() {
   }
 
   return (
-    <main>
+    <main className="page-container">
       <table className="orders-table">
         <thead>
           <tr>
