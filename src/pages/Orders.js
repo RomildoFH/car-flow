@@ -37,9 +37,16 @@ function Orders() {
     }
   };
 
+  const orderingList = () => {
+    const currentList = orderList;
+    const orderedList = currentList.sort((a, b) => a.id - b.id);
+    return orderedList;
+  }
+
   const generateOrders = () => {
+    const orderedList = orderingList();
     return (
-      orderList.map((order, index) => {
+      orderedList.map((order, index) => {
         const {
           id,
           customer,
@@ -77,7 +84,7 @@ function Orders() {
         )
       })
     )
-  }
+  };
 
   return (    
     <main className="page-container">

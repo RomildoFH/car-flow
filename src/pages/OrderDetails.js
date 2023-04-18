@@ -156,8 +156,6 @@ function OrderDetails() {
     }
   }, [order])
 
-
-
   return (
     isLoading ? <LoadingPage /> :
     <main className="page-container">
