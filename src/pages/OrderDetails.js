@@ -1,25 +1,44 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import Employees from '../data/Employees';
+import Orders from '../data/Orders';
+import LoadingPage from '../components/LoadingPage/LoadingPage';
 import './OrderDetails.css';
 
 function OrderDetails() {
   const {
     order,
+    setOrder,
     orderList,
     setOrderList,
   } = useContext(AppContext);
 
+  
+  const [employee, setEmployee] = useState('');
+  
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const location = useLocation();
+  const pathname = location.pathname.replace('/car-flow/ordens/', '')
+  const orderId = Number(pathname);
+
+  const [orderFiltred] = useState(Orders.filter((e) => e.id === orderId)[0])
+  
   const { customer, budget } = order;
+  // const services = budget.filter((e) => e.type === 'Serviço');
+  // const parts = budget.filter((e) => e.type === 'Produto');
 
-  const [employee, setEmployee] = useState('')
-
-  const services = budget.filter((e) => e.type === 'Serviço');
-  const parts = budget.filter((e) => e.type === 'Produto');
+  const getData = () => {
+    return ({
+      services: budget.filter((e) => e.type === 'Serviço'),
+      parts: budget.filter((e) => e.type === 'Produto'),
+    })
+  }
 
   const getEmployees = () => {
     return (
-      <select className="mechanic-select" name="employee" onChange={(e) => handleChange(e)}>
+      <select className="mechanic-select" name="employee" onChange={(e) => handleChange(e)} value={employee}>
         <option></option>
         {
           Employees.filter((employee) => (employee.status === 'availabel'))
@@ -46,11 +65,12 @@ function OrderDetails() {
     const { name } = target;
     const assigningOrder = {...order};
     const otherOrders = orderList.filter((o) => o.id !== order.id);
+    const currentDate = employee ? (new Date()).toISOString() : ''
     console.log('clickou');
     switch (name) {
       case 'assign':
         assigningOrder.mechanic = employee;
-        assigningOrder.startedAt = (new Date()).toISOString();
+        assigningOrder.startedAt = currentDate;
         console.log(employee);
         setOrderList([...otherOrders, assigningOrder])
         break;
@@ -66,7 +86,7 @@ function OrderDetails() {
         <fieldset className="sub-section">
           <legend>Mão de Obra:</legend>
           {
-            services.map((e, index) => {
+            getData().services.map((e, index) => {
               return (
                 <li key={index} className="not-styled-list">{`• Ref.: ${e.id} - ${e.name};`}</li>
               )
@@ -76,7 +96,7 @@ function OrderDetails() {
         <fieldset className="sub-section">
           <legend>Material:</legend>
           {
-            parts.map((e, index) => {
+            getData().parts.map((e, index) => {
               return (
                 <li key={index} className="not-styled-list">{`• Ref.: ${e.id} - ${e.name};`}</li>
               )
@@ -94,8 +114,26 @@ function OrderDetails() {
     )
   };
 
+  useEffect(() => {
+    console.log(order)
+    if(!order.id) {
+      setOrder(orderFiltred);
+    }
+    if(order.mechanic) {
+      setEmployee(order.mechanic)
+    }
+  }, [])
+
+  useEffect(() => {
+    if(order && isLoading) {
+      setIsLoading(false)
+    }
+  }, order)
+
   return (
+    isLoading ? <LoadingPage /> :
     <main className="page-container">
+      {console.log('render')}
       <form>
         <fieldset className="forms-section">
           <legend>Dados do cliente</legend>

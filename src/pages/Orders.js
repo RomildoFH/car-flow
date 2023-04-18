@@ -59,9 +59,9 @@ function Orders() {
               `R$ ${getTotal(budget)}`
             }
           </td>
-          <td>{ openAt.replace('T', ' ').replace('.137Z', '') }</td>
-          <td>{ startedAt.replace('T', ' ').replace('.137Z', '') }</td>
-          <td>{ finishedAt.replace('T', ' ').replace('.137Z', '') }</td>
+          <td>{ openAt.replace('T', ' ') }</td>
+          <td>{ startedAt.replace('T', ' ') }</td>
+          <td>{ finishedAt.replace('T', ' ') }</td>
           <td>
             {
               `${defineStatus(id)}`
