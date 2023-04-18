@@ -25,7 +25,7 @@ function Header() {
   return (
     <header>
       <div className="logo-container">
-        <Link to={ `/car-flow` }>
+        <Link to={ `/` }>
           <img className="logo-header" src={Logo} alt="logo.png" />        
         </Link>
       </div>
