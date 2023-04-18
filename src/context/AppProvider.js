@@ -57,7 +57,7 @@ function AppProvider( { children } ) {
       { children }
     </AppContext.Provider>
   )
-};
+}
 
 AppProvider.propTypes = {
   children: PropTypes.shape({}),
