@@ -29,9 +29,6 @@ function OrderDetails() {
   const [orderFiltred] = useState(Orders.filter((e) => e.id === orderId)[0]);
   
   const { customer, budget } = order;
-  // const services = budget.filter((e) => e.type === 'Serviço');
-  // const parts = budget.filter((e) => e.type === 'Produto');
-
   const getData = () => {
     return ({
       services: budget.filter((e) => e.type === 'Serviço'),
