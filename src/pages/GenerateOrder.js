@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Services from '../data/Services';
 import Products from '../data/Products';
-import './Order.css'
+import './GenerateOrder.css'
 import AppContext from '../context/AppContext';
 
 function GenerateOrder() {
@@ -150,6 +150,7 @@ function GenerateOrder() {
       openAt: open,
       startedAt: '',
       finishedAt: '',
+      mechanic: '',
     };
     setOrder(newOrder);
     const newOrderList = [...orderList, newOrder];
