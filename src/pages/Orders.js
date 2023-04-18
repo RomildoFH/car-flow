@@ -11,7 +11,6 @@ function Orders() {
   } = useContext(AppContext);
 
   const getTotal = (budget) => {
-    console.log(budget)
     return (
       (budget.reduce((acc, curr) => {
         return (acc + curr.price)
@@ -24,6 +23,20 @@ function Orders() {
     setOrderList(newOrderList);
   };
 
+  const defineStatus = (id) => {
+    const filtredOrder = orderList.filter((o) => o.id === id)[0];
+
+    if(!filtredOrder.startedAt) {
+      return 'Aguardando';
+    }
+    if(!filtredOrder.finishedAt) {
+      return 'Em andamento';
+    }
+    if(filtredOrder.finishedAt) {
+      return 'Finalizada';
+    }
+  };
+
   const generateOrders = () => {
     return (
       orderList.map((order, index) => {
@@ -31,41 +44,29 @@ function Orders() {
           id,
           customer,
           budget,
-          status,
           openAt,
           startedAt,
           finishedAt,
-          // mechanic,
         } = order;
-
-        // const services = budget.filter((e) => e.type === 'Serviço');
-        // const parts = budget.filter((e) => e.type === 'Produto');
 
         return (
         <tr key={ index }>
           <td>{ order.id }</td>
           <td>{ customer.name }</td>
           <td>{ customer.phone }</td>
-          {/* <td>
-            {
-              services.map((service, index) => (<p key={index}>{ `- ${service.name}` }</p>))
-            }
-          </td>
-          <td>
-            {
-              parts.map((part, index) => (<p key={index}>{ `- ${part.name}` }</p>))
-            }
-          </td> */}
           <td>
             {
               `R$ ${getTotal(budget)}`
             }
           </td>
-          {/* <td>Mecânico</td> */}
           <td>{ openAt.replace('T', ' ').replace('.137Z', '') }</td>
           <td>{ startedAt.replace('T', ' ').replace('.137Z', '') }</td>
           <td>{ finishedAt.replace('T', ' ').replace('.137Z', '') }</td>
-          <td>{ status }</td>
+          <td>
+            {
+              `${defineStatus(id)}`
+            }            
+          </td>
           <td>
             <Link to={`/car-flow/ordens/${id}`}>
               <span className="controller-option" onClick={() => setOrder(order)}>📂</span>
@@ -86,10 +87,7 @@ function Orders() {
             <th>Id</th>
             <th>Cliente</th>
             <th>Contato</th>
-            {/* <th>Serviços</th>
-            <th>Peças</th> */}
             <th>Orçamento</th>
-            {/* <th>Mecânico</th> */}
             <th>Abertura</th>
             <th>Inicio</th>
             <th>Término</th>

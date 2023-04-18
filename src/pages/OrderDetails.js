@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import AppContext from '../context/AppContext';
 import Employees from '../data/Employees';
 import './OrderDetails.css';
@@ -12,15 +12,55 @@ function OrderDetails() {
 
   const { customer, budget } = order;
 
+  const [employee, setEmployee] = useState('')
+
   const services = budget.filter((e) => e.type === 'Serviço');
   const parts = budget.filter((e) => e.type === 'Produto');
 
   const getEmployees = () => {
+    return (
+      <select className="mechanic-select" name="employee" onChange={(e) => handleChange(e)}>
+        <option></option>
+        {
+          Employees.filter((employee) => (employee.status === 'availabel'))
+            .map((e) => (<option key={e.id}>{ e.name }</option>))
+        }
+      </select>
+    )
+  };
 
-  }
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+
+    switch (name) {
+      case 'employee':
+        setEmployee(value);
+        break;
+    
+      default:
+        break;
+    }
+  };
+
+  const handleClick = ({ target }) => {
+    const { name } = target;
+    const assigningOrder = {...order};
+    const otherOrders = orderList.filter((o) => o.id !== order.id);
+    console.log('clickou');
+    switch (name) {
+      case 'assign':
+        assigningOrder.mechanic = employee;
+        assigningOrder.startedAt = (new Date()).toISOString();
+        console.log(employee);
+        setOrderList([...otherOrders, assigningOrder])
+        break;
+      default:
+        break;
+    }
+    
+  };
 
   const getServicesData = () => {
-    console.log(budget);
     return (
       <ul>
         <fieldset className="sub-section">
@@ -28,7 +68,7 @@ function OrderDetails() {
           {
             services.map((e, index) => {
               return (
-                <li key={index} className="not-styled-list">- {e.name};</li>
+                <li key={index} className="not-styled-list">{`• Ref.: ${e.id} - ${e.name};`}</li>
               )
             })
           }
@@ -38,13 +78,17 @@ function OrderDetails() {
           {
             parts.map((e, index) => {
               return (
-                <li key={index} className="not-styled-list">- {e.name};</li>
+                <li key={index} className="not-styled-list">{`• Ref.: ${e.id} - ${e.name};`}</li>
               )
             })
           }
-          {
-            getEmployees()
-          }
+          <label>
+            Mecânico:
+            {
+              getEmployees()
+            }
+          </label>
+          <button type="button" name="assign" onClick={(e) => handleClick(e)}>Atribuir</button>
         </fieldset>
       </ul>
     )

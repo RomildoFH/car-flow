@@ -5,3 +5,8 @@
 .not-styled-list {
   list-style: none;
 }
+
+.mechanic-select {
+  margin: 20px 10px;
+  width: 100px;
+}
