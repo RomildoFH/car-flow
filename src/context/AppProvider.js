@@ -4,8 +4,11 @@ import AppContext from './AppContext';
 
 function AppProvider( { children } ) {
   const [isLoading, setIsLoading] = useState(true);
-  const [productList, setProductList] = useState({});
-  const [product, setProduct] = useState({});
+  const [productList, setProductList] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [service, setService] = useState([]);
+  const [serviceList, setServiceList] = useState([]);
+  const [partList, setPartList] = useState([]);
 
   const values = useMemo(() => ({
     isLoading,
@@ -14,10 +17,19 @@ function AppProvider( { children } ) {
     setProductList,
     product,
     setProduct,
+    service,
+    setService,
+    serviceList,
+    setServiceList,
+    partList,
+    setPartList,
   }), [
     isLoading,
     productList,
     product,
+    service,
+    serviceList,
+    partList,
   ])
 
   return (

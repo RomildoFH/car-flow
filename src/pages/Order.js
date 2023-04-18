@@ -5,17 +5,68 @@ import './Order.css'
 import AppContext from '../context/AppContext';
 
 function Order() {
-  const { product, setProduct } = useContext(AppContext);
+  const {
+    product,
+    setProduct,
+    service,
+    setService,
+    serviceList,
+    setServiceList,
+    partList,
+    setPartList,
+  } = useContext(AppContext);
 
   const handleChange = ({ target }) => {
     const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    
+    const value = target.type === 'checkbox' ? target.checked : target.value;    
 
     switch (name) {
       case 'product':
         setProduct(Products.filter((product) => product.name === value));
         break;    
+      case 'service':
+        setService(Services.filter((service) => service.name === value));
+        break;
+      default:
+        break;
+    }
+  };
+
+  const generateBudget = () => {
+    const budget = [...partList, ...serviceList];
+    console.log(budget)
+    return (
+      <tbody>
+        {
+          budget.map((e, index) => {
+            console.log(e)
+            return (
+              <tr key={ index }>
+                <td>{ e.name }</td>
+                <td>{ e.price.toFixed(2) }</td>
+                <td>X</td>
+              </tr>
+            )
+          })
+        }
+      </tbody>
+    )
+  };
+
+  const handleClick = ({ target }) => {
+    const { name } = target;
+
+    const currentServiceList = [...serviceList];
+    const currentProductList = [...partList]
+    switch (name) {
+      case 'add-service':
+        currentServiceList.push(service[0])
+        setServiceList(currentServiceList);
+        break;
+      case 'add-product':
+        currentProductList.push(product[0])
+        setPartList(currentProductList);
+        break;
       default:
         break;
     }
@@ -23,7 +74,8 @@ function Order() {
 
   const getServices = () => {
     return (
-      <select>
+      <select name="service" onChange={handleChange}>
+        {/* <option>Selecione um serviço</option> */}
         {Services.map((service, index) => (
           <option key={ `option-${index}` }>{ service.name }</option>
       ))}
@@ -34,7 +86,7 @@ function Order() {
   const getProducts = () => {
     return (
       <select name="product" onChange={(e) =>handleChange(e)}>
-        <option>Selecione uma peça</option>
+        {/* <option>Selecione uma peça</option> */}
         {Products.map((products, index) => (
           <option key={ `option-${index}` }>{ products.name }</option>
       ))}
@@ -55,7 +107,7 @@ function Order() {
         }
       </ul>
     )
-  }
+  };
 
   return (
     <main className="page-container">
@@ -103,7 +155,21 @@ function Order() {
               getServices()
             }
           </label>
-          <button type="button">Adicionar</button>
+          <br></br>
+          <p>Preço:
+            {' '}
+            {
+              service.length > 0 ? (`R$${service[0].price.toFixed(2)}`) : null
+            }
+          </p>
+          <button
+            type="button"
+            name="add-service"
+            onClick={(e) => handleClick(e)}
+            disabled={service.length < 1}
+          >
+            Adicionar
+          </button>
         </fieldset>
         <fieldset className="forms-section-products">
           <legend>Dados de peças</legend>
@@ -130,10 +196,29 @@ function Order() {
               <p className="instruction-text">Selecione a peça desejada</p>
             }
           </label>
-          <button type="button">Adicionar</button>
+          <button
+            type="button"
+            name="add-product"
+            onClick={(e) => handleClick(e)}
+            disabled={product.length < 1}
+          >
+            Adicionar
+          </button>
         </fieldset>
         <fieldset>
           <legend>Ordem de serviço</legend>
+          <table>
+            <thead>
+              <tr>
+                <td>Produto/Serviço</td>
+                <td>Preço</td>
+                <td>Excluir</td>
+              </tr>
+            </thead>
+            {
+              (serviceList.length > 0 || partList.length > 0) ? generateBudget() : null
+            }
+          </table>
         </fieldset>
       </form>
     </main>
