@@ -27,7 +27,7 @@ Para utilizar essa aplicação em seu browser, acesse o link <a href="https://ca
 A aplicação não conta com banco de dados implementados, então os dados são estáticos e estão sendo renderizados na tela através de mocks. Ainda que não possua banco de dados, o usuário poderá interagir com a aplicação em todas as suas funcionalidades, porém ao deixar a página, os dados serão perdidos.
 
 ### Uso Local
-Para utilizar esse projeto localmente, você deverá realizar o clone do repositório atrés do comando:
+Para utilizar esse projeto localmente, você deverá realizar o clone do repositório através do comando:
 ```
 git clone git@github.com:RomildoFH/car-flow.git
 ```
@@ -53,7 +53,7 @@ Esse comando abrirá uma nova aba em seu navegador web, e você poderá fazer us
 
 ## Dificuldades na elaboração do projeto
 <ul>
-  <li>Dificuldades en consciliar as rotas da aplicação com o github pages</li>
+  <li>Dificuldades em conciliar as rotas da aplicação com o github pages, optando assim pela Vercel</li>
   <li>Levantamento de informações compatíveis com o projeto</li>
   <li>Realizar a "gestão" dos dados através de mocks e não de banco de dados ou APIs que pudessem trazer segurança e praticidade</li>
   <li>Prazo curto para desenvolvimento</li>
