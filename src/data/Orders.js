@@ -16,7 +16,7 @@ const Orders = [
         type: 'Serviço',
       },
       {
-        id: 3,
+        id: 5,
         name: 'Substituição do filtro de óleo',
         price: 20.00,
         type: 'Serviço',
@@ -45,7 +45,7 @@ const Orders = [
     },
     budget: [
       {
-        id: 3,
+        id: 2,
         name: "Substituição de correia dentada",
         price: 150.00,
         type: 'Serviço',
@@ -74,7 +74,7 @@ const Orders = [
     },
     budget: [
       {
-        id: 3,
+        id: 4,
         name: 'Substituição do terminal da suspensão diânteira um lado',
         price: 40.00,
         type: 'Serviço',
@@ -103,7 +103,7 @@ const Orders = [
     },
     budget: [
       {
-        id: 3,
+        id: 5,
         name: 'Substituição do filtro de óleo',
         price: 20.00,
         type: 'Serviço',
