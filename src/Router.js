@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Occupation from './pages/Occupation'
 import OrderDetails from './pages/OrderDetails'
 import Orders from './pages/Orders'
+import Report from './pages/Report'
 
 function Routers() {
   return (
@@ -14,6 +15,7 @@ function Routers() {
       <Route exact path="/ordens" element={ <Orders /> } />
       <Route path="/ordens/:id" element={ <OrderDetails /> } />
       <Route path="/ocupacao" element={ <Occupation /> } />
+      <Route path="/relatorio" element={ <Report /> } />
     </Routes>
   )
 }

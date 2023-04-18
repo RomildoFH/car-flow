@@ -4,7 +4,7 @@ const Orders = [
     customer: {
       name: 'Romildo Silva Filho',
       car: 'Grand Siena 1.6',
-      plate: 'XYZ1234',
+      plate: 'XYZ-1234',
       year: '2014',
       phone: '4002-8922',
     },
@@ -39,7 +39,7 @@ const Orders = [
     customer: {
       name: 'Romildo Silva Filho',
       car: 'Grand Siena 1.6',
-      plate: 'XYZ1234',
+      plate: 'ABC-9874',
       year: '2014',
       phone: '4002-8922',
     },
@@ -68,7 +68,7 @@ const Orders = [
     customer: {
       name: 'Romildo Silva Filho',
       car: 'Grand Siena 1.6',
-      plate: 'XYZ1234',
+      plate: 'QWE-2587',
       year: '2014',
       phone: '4002-8922',
     },
@@ -97,7 +97,7 @@ const Orders = [
     customer: {
       name: 'Romildo Silva Filho',
       car: 'Grand Siena 1.6',
-      plate: 'XYZ1234',
+      plate: 'DSA-6541',
       year: '2014',
       phone: '4002-8922',
     },

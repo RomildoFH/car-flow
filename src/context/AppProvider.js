@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 import Orders from '../data/Orders';
 
 function AppProvider( { children } ) {
   const [isLoading, setIsLoading] = useState(true);
+  const [email, setEmail] = useState('');
   const [productList, setProductList] = useState([]);
   const [product, setProduct] = useState([]);
   const [service, setService] = useState([]);
@@ -20,6 +21,8 @@ function AppProvider( { children } ) {
   const [orderList, setOrderList] = useState(Orders);
 
   const values = useMemo(() => ({
+    email,
+    setEmail,
     isLoading,
     setIsLoading,
     productList,
@@ -39,6 +42,7 @@ function AppProvider( { children } ) {
 
   }), [
     isLoading,
+    email,
     productList,
     product,
     service,
@@ -53,10 +57,10 @@ function AppProvider( { children } ) {
       { children }
     </AppContext.Provider>
   )
-}
+};
 
 AppProvider.propTypes = {
   children: PropTypes.shape({}),
-}
+};
 
 export default AppProvider;
